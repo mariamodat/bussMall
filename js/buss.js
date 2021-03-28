@@ -40,14 +40,17 @@ let third=document.getElementById('third-img');
 
 function render(){
 
-  firstIndex=getRandomIntInclusive(0,names.length);
+  firstIndex=getRandomIntInclusive(0,BussMall.all.length);
 
   firstImage.src= BussMall.all[firstIndex].imgPath;
   firstImage.title= BussMall.all[firstIndex].name;
   firstImage.alt= BussMall.all [firstIndex].name;
 
 
-  secondIndex = getRandomIntInclusive(0,names.length);
+
+
+
+  secondIndex = getRandomIntInclusive(0,BussMall.all.length);
 
   middle.src= BussMall.all[secondIndex].imgPath;
   middle.alt=BussMall.all[secondIndex].name;
@@ -55,11 +58,26 @@ function render(){
 
 
 
-  thirdIndex = getRandomIntInclusive(0,names.length);
+  thirdIndex = getRandomIntInclusive(0,BussMall.all.length);
 
   third.src= BussMall.all[thirdIndex].imgPath;
   third.alt=BussMall.all[thirdIndex].name;
   third.title=BussMall.all[thirdIndex].name;
+
+  if (firstIndex=== secondIndex || secondIndex=== thirdIndex)
+  {
+    firstIndex+=1;
+    if (firstIndex >names.e)
+    {
+      firstIndex -+3;
+    }
+
+
+    thirdIndex +=2;
+    if (thirdIndex>names.length)
+    { thirdIndex-=4;}
+  }
+
 
 
   section.addEventListener('click' , votesClick);
@@ -67,7 +85,7 @@ function render(){
   function votesClick (e)
   {
 
-
+    e.preventDefault();
 
     if (e.target.id !== 'img-secs')
     {
@@ -98,11 +116,11 @@ function render(){
 
     if (trials===25)
     {
-      alert('you have finished the attempts');
+      alert('you have finished the trials');
     }
 
 
-    // console.table(BussMall.all);
+    console.table(BussMall.all);
 
 
 
