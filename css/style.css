@@ -28,3 +28,18 @@ nav {
 li :hover {
     color: #d89ba4 ;
 }
+
+section {
+    display: inline-block;
+    size:  10%;
+    margin-left: 80px;
+}
+section img {
+    width: 375px;
+    height: 300px;
+    padding: 10px;
+    border:  1px solid gray;
+    border-radius: 10px;
+    background-color: #3d5a80 ;
+    margin-left: 20px;
+}
