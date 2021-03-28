@@ -4,7 +4,7 @@ let firstIndex ;
 let secondIndex ;
 let thirdIndex ;
 let trials = 0;
-
+let rnd=[];
 
 function BussMall(name) {
 
@@ -25,6 +25,15 @@ function getRandomIntInclusive(min, max) {
   return Math.floor(Math.random() * (max - min + 1) + min); //The maximum is inclusive and the minimum is inclusive
 }
 
+names.forEach(num => {
+  rnd.push(getRandomIntInclusive(0,num.length-1));
+});
+
+
+console.log(rnd);
+
+
+
 
 for (let i = 0 ; i< names.length ; i ++ )
 {
@@ -40,7 +49,8 @@ let third=document.getElementById('third-img');
 
 function render(){
 
-  firstIndex=getRandomIntInclusive(0,BussMall.all.length);
+  firstIndex=getRandomIntInclusive(0,BussMall.all.length -1);
+  console.log(firstIndex);
 
   firstImage.src= BussMall.all[firstIndex].imgPath;
   firstImage.title= BussMall.all[firstIndex].name;
@@ -50,7 +60,7 @@ function render(){
 
 
 
-  secondIndex = getRandomIntInclusive(0,BussMall.all.length);
+  secondIndex = getRandomIntInclusive(0,BussMall.all.length-1);
 
   middle.src= BussMall.all[secondIndex].imgPath;
   middle.alt=BussMall.all[secondIndex].name;
@@ -58,24 +68,32 @@ function render(){
 
 
 
-  thirdIndex = getRandomIntInclusive(0,BussMall.all.length);
+  thirdIndex = getRandomIntInclusive(0,BussMall.all.length-1);
 
   third.src= BussMall.all[thirdIndex].imgPath;
   third.alt=BussMall.all[thirdIndex].name;
   third.title=BussMall.all[thirdIndex].name;
 
-  if (firstIndex=== secondIndex || secondIndex=== thirdIndex)
+  if (firstIndex=== secondIndex || firstIndex=== thirdIndex)
   {
     firstIndex+=1;
-    if (firstIndex >names.e)
+    if (firstIndex >names.length-1)
     {
-      firstIndex -+3;
+      firstIndex -=3;
     }
+    if (secondIndex=== thirdIndex || secondIndex === firstIndex)
 
-
-    thirdIndex +=2;
-    if (thirdIndex>names.length)
-    { thirdIndex-=4;}
+      secondIndex +=2;
+    if (secondIndex>names.length-1)
+    { secondIndex-=4;}
+  }
+  if (thirdIndex=== firstIndex || thirdIndex === secondIndex)
+  {
+    thirdIndex +=3;
+    if (thirdIndex>names.length-1)
+    {
+      thirdIndex-=1 ;
+    }
   }
 
 
@@ -122,6 +140,13 @@ function render(){
 
     console.table(BussMall.all);
 
+    let div = document.querySelector('.result');
+    let heading = document.createElement('h1');
+    div.append(heading);
+    heading.textContent=('the results of voting gonna be ');
+    let results=document.createElement('h2');
+    heading.append(results);
+    results.textContent= (` the photo that has highest voting reached ${BussMall.name} and  ${BussMall.votes}`);
 
 
   }
