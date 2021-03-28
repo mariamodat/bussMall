@@ -3,7 +3,7 @@ const names = ['bag.jpg', 'banana.jpg', 'bathroom.jpg', 'boots.jpg', 'chair.jpg'
 let firstIndex ;
 let secondIndex ;
 let thirdIndex ;
-
+let trials = 0;
 
 
 function BussMall(name) {
@@ -76,16 +76,19 @@ function render(){
       {
 
         BussMall.all[firstIndex].votes++ ;
+        trials++;
 
       }
 
       else if ( e.target.id === 'midd-img')
       {
         BussMall.all[secondIndex].votes++;
+        trials++;
       }
 
       else {
         BussMall.all[thirdIndex].votes++;
+        trials++;
       }
 
 
@@ -93,8 +96,13 @@ function render(){
 
 
 
+    if (trials===25)
+    {
+      alert('you have finished the attempts');
+    }
 
-    console.table(BussMall.all);
+
+    // console.table(BussMall.all);
 
 
 
@@ -106,7 +114,6 @@ function render(){
 
 
 }
-
 
 render();
 
