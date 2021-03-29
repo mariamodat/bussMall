@@ -1,5 +1,7 @@
 'use strict';
-const names = ['bag.jpg', 'banana.jpg', 'bathroom.jpg', 'boots.jpg', 'chair.jpg', 'cthulhu.jpg', 'dog-duck.jpg', 'pet-sweep.jpg', 'scissors.jpg', 'shark.jpg', 'sweep.png', 'usb.gif', 'water-can.jpg', 'wine-glass.jpg'];
+const paths = ['bag.jpg', 'banana.jpg', 'bathroom.jpg', 'boots.jpg', 'chair.jpg', 'cthulhu.jpg', 'dog-duck.jpg', 'pet-sweep.jpg', 'scissors.jpg', 'shark.jpg', 'sweep.png', 'usb.gif', 'water-can.jpg', 'wine-glass.jpg'];
+const names = ['bag', 'banana', 'bathroom', 'boots', 'chair', 'cthulhu', 'dog-duck', 'pet-sweep', 'scissors', 'shark', 'sweep', 'usb', 'water-can', 'wine-glass'];
+
 let firstIndex ;
 let secondIndex ;
 let thirdIndex ;
@@ -8,10 +10,10 @@ let rnd=[];
 let viewsArr=[];
 let votesArr=[]; 
 
-function BussMall(name) {
+function BussMall(name , paths) {
 
   this.name = name;
-  this.imgPath = `images/${name}` ;
+  this.imgPath = `images/${paths}` ;
   this.showTimes = 0;
   this.votes = 0;
   this.views = 0 ;
@@ -40,7 +42,7 @@ console.log(rnd);
 
 for (let i = 0 ; i< names.length ; i ++ )
 {
-  new BussMall (names[i]);
+  new BussMall (names[i] , paths[i]);
 }
 // console.log(BussMall.all);
 
@@ -53,8 +55,19 @@ let third=document.getElementById('third-img');
 
 function render(){
 
+ do {
   firstIndex=getRandomIntInclusive(0,BussMall.all.length -1);
   // console.log(firstIndex);
+
+  
+  secondIndex = getRandomIntInclusive(0,BussMall.all.length-1);
+
+
+  thirdIndex = getRandomIntInclusive(0,BussMall.all.length-1);
+ 
+}  while(secondIndex === firstIndex || secondIndex === thirdIndex || thirdIndex === firstIndex)
+
+
 
   firstImage.src= BussMall.all[firstIndex].imgPath;
   firstImage.title= BussMall.all[firstIndex].name;
@@ -64,41 +77,23 @@ function render(){
 
 
 
-  secondIndex = getRandomIntInclusive(0,BussMall.all.length-1);
-
+ 
   middle.src= BussMall.all[secondIndex].imgPath;
   middle.alt=BussMall.all[secondIndex].name;
   middle.title=BussMall.all[secondIndex].name;
 
 
 
-  thirdIndex = getRandomIntInclusive(0,BussMall.all.length-1);
+
+
+
 
   third.src= BussMall.all[thirdIndex].imgPath;
   third.alt=BussMall.all[thirdIndex].name;
   third.title=BussMall.all[thirdIndex].name;
 
-  if (firstIndex=== secondIndex || firstIndex=== thirdIndex)
-  {
-    firstIndex+=1;
-    if (firstIndex >names.length-1)
-    {
-      firstIndex -=3;
-    }
-    if (secondIndex=== thirdIndex || secondIndex === firstIndex)
 
-      secondIndex +=2;
-    if (secondIndex>names.length-1)
-    { secondIndex-=4;}
-  }
-  if (thirdIndex=== firstIndex || thirdIndex === secondIndex)
-  {
-    thirdIndex +=3;
-    if (thirdIndex>names.length-1)
-    {
-      thirdIndex-=1 ;
-    }
-  }
+  
 }
 
 
