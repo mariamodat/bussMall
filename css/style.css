@@ -43,3 +43,9 @@ section img {
     background-color: #3d5a80 ;
     margin-left: 20px;
 }
+button {
+    padding: 20px ;
+    background-color: #3d5a80;
+    color: white;
+    margin-left: 220px;
+}

@@ -12,6 +12,7 @@ function BussMall(name) {
   this.imgPath = `images/${name}` ;
   this.showTimes = 0;
   this.votes = 0;
+  this.views = 0 ;
 
 
   BussMall.all.push(this);
@@ -103,7 +104,7 @@ function render(){
   function votesClick (e)
   {
 
-    e.preventDefault();
+    // e.preventDefault();
 
     if (e.target.id !== 'img-secs')
     {
@@ -113,6 +114,7 @@ function render(){
 
         BussMall.all[firstIndex].votes++ ;
         trials++;
+        BussMall.all[firstIndex].views++ ;
 
       }
 
@@ -120,11 +122,15 @@ function render(){
       {
         BussMall.all[secondIndex].votes++;
         trials++;
+        BussMall.all[secondIndex].views++ ;
+
       }
 
       else {
         BussMall.all[thirdIndex].votes++;
         trials++;
+        BussMall.all[thirdIndex].views++ ;
+
       }
 
 
@@ -138,7 +144,13 @@ function render(){
     }
 
 
-    console.table(BussMall.all);
+let btn = document.getElementById('res');
+btn.addEventListener('click' , resultChart) ;
+
+function resultChart (event) 
+{
+
+    // console.table(BussMall.all);
 
     let div = document.querySelector('.result');
     let heading = document.createElement('h1');
@@ -146,12 +158,23 @@ function render(){
     heading.textContent=('the results of voting gonna be ');
     let results=document.createElement('h2');
     heading.append(results);
-    results.textContent= (` the photo that has highest voting reached ${BussMall.name} and  ${BussMall.votes}`);
+    results.textContent= (` the photo that has highest voting reached ${BussMall.all.name} and  ${BussMall.all.votes} Votes ${BussMall.all.views} Views as well !`);
 
 
   }
 
 
+
+
+
+
+
+
+
+
+
+
+  }
 
 
 
