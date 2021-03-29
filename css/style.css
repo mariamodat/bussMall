@@ -49,3 +49,14 @@ button {
     color: white;
     margin-left: 220px;
 }
+
+.result {
+    padding: 20px ;
+    background-color: #d89ba4;
+    font-size: larger;
+    font-family: 'Josefin Sans', sans-serif;
+
+}
+.result li {
+    margin: 20px;
+}
