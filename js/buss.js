@@ -20,7 +20,7 @@ function BussMall(name , paths) {
 
   BussMall.all.push(this);
 
-BussMall.votes.push(this);
+// BussMall.votes.push(this);
 
 storage ();
 
@@ -30,7 +30,7 @@ storage ();
 
 function storage ()
 {
-let data = JSON.stringify(BussMall.votes);
+let data = JSON.stringify(BussMall.all);
 localStorage.setItem('name' , data);
 
 }
@@ -40,7 +40,7 @@ function prasing (){
   let dataPrase = JSON.parse(normObj);
   if (normObj !== null)
   {
-    BussMall.votes=dataPrase;
+    BussMall.all=dataPrase;
   }
   render();
 }
@@ -182,7 +182,6 @@ render();
   }
 
   render();
-   prasing ();
 
 
 let btn = document.getElementById('res');
@@ -250,3 +249,4 @@ function chartRender() {
 }
 
 chartRender();
+prasing ();
