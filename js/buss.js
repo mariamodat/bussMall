@@ -22,6 +22,7 @@ function BussMall(name , paths) {
 
 BussMall.votes.push(this);
 
+storage ();
 
 
 
@@ -91,32 +92,13 @@ function render(){
 
 
   thirdIndex = getRandomIntInclusive(0,BussMall.all.length-1);
-  rnd.push(firstIndex,secondIndex,thirdIndex);
  
-}  while(secondIndex === firstIndex || secondIndex === thirdIndex || thirdIndex === firstIndex)
+ 
+}  while(secondIndex === firstIndex || secondIndex === thirdIndex || thirdIndex === firstIndex || rnd.includes(firstIndex) || rnd.includes(secondIndex) || rnd.includes(thirdIndex))
 
 
 
-while (rnd.includes(firstIndex) || rnd.includes(secondIndex) || rnd.includes(thirdIndex))
-{
-  firstIndex=getRandomIntInclusive(0,BussMall.all.length -1);
-
-  
-  secondIndex = getRandomIntInclusive(0,BussMall.all.length-1);
-
-
-  thirdIndex = getRandomIntInclusive(0,BussMall.all.length-1);
-
-}
-
-
-
-
-
-
-
-
-
+ 
 
 
 
@@ -136,16 +118,13 @@ while (rnd.includes(firstIndex) || rnd.includes(secondIndex) || rnd.includes(thi
 
 
 
-
-
-
-
   third.src= BussMall.all[thirdIndex].imgPath;
   third.alt=BussMall.all[thirdIndex].name;
   third.title=BussMall.all[thirdIndex].name;
 
-
-  
+  rnd[0]=firstIndex;
+  rnd[1]=secondIndex;
+  rnd[2]=thirdIndex;
 }
 
 
@@ -156,6 +135,7 @@ while (rnd.includes(firstIndex) || rnd.includes(secondIndex) || rnd.includes(thi
 
   function votesClick (e)
   {
+    console.log(rnd);
 
     // e.preventDefault();
     BussMall.all[firstIndex].views++ ;
@@ -201,7 +181,7 @@ render();
   }
 
   render();
-
+   prasing ();
 
 
 let btn = document.getElementById('res');
