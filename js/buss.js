@@ -18,9 +18,36 @@ function BussMall(name , paths) {
   this.votes = 0;
   this.views = 0 ;
 
-
   BussMall.all.push(this);
+
+BussMall.votes.push(this);
+
+
+
+
 }
+
+function storage ()
+{
+let data = JSON.stringify(BussMall.votes);
+localStorage.setItem('name' , data);
+
+}
+
+function prasing (){
+  let normObj = localStorage.getItem('name');
+  let dataPrase = JSON.parse(normObj);
+  if (normObj !== null)
+  {
+    BussMall.votes=dataPrase;
+  }
+  render();
+}
+
+console.log(localStorage.getItem('name'));
+
+BussMall.votes=[];
+
 BussMall.all = [];
 
 
@@ -30,12 +57,12 @@ function getRandomIntInclusive(min, max) {
   return Math.floor(Math.random() * (max - min + 1) + min); //The maximum is inclusive and the minimum is inclusive
 }
 
-names.forEach(num => {
-  rnd.push(getRandomIntInclusive(0,num.length-1));
-});
+// names.forEach(num => {
+//   rnd.push(getRandomIntInclusive(0,num.length-1));
+// });
 
 
-console.log(rnd);
+// console.log(rnd);
 
 
 
@@ -64,8 +91,33 @@ function render(){
 
 
   thirdIndex = getRandomIntInclusive(0,BussMall.all.length-1);
+  rnd.push(firstIndex,secondIndex,thirdIndex);
  
 }  while(secondIndex === firstIndex || secondIndex === thirdIndex || thirdIndex === firstIndex)
+
+
+
+while (rnd.includes(firstIndex) || rnd.includes(secondIndex) || rnd.includes(thirdIndex))
+{
+  firstIndex=getRandomIntInclusive(0,BussMall.all.length -1);
+
+  
+  secondIndex = getRandomIntInclusive(0,BussMall.all.length-1);
+
+
+  thirdIndex = getRandomIntInclusive(0,BussMall.all.length-1);
+
+}
+
+
+
+
+
+
+
+
+
+
 
 
 
