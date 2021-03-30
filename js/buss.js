@@ -45,12 +45,13 @@ function prasing (){
   render();
 }
 
-console.log(localStorage.getItem('name'));
+// console.log(localStorage.getItem('name'));
 
 BussMall.votes=[];
 
 BussMall.all = [];
 
+console.log(BussMall.votes);
 
 function getRandomIntInclusive(min, max) {
   min = Math.ceil(min);
@@ -135,7 +136,7 @@ function render(){
 
   function votesClick (e)
   {
-    console.log(rnd);
+    // console.log(rnd);
 
     // e.preventDefault();
     BussMall.all[firstIndex].views++ ;
